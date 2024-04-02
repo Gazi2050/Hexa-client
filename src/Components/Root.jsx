@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 const Root = () => {
     return (
-        <div>
+        <div className="bg-zinc-800 h-screen text-white">
             <div className="flex justify-start">
                 <div>
                     <Navbar />
