@@ -4,6 +4,8 @@ import { HiRectangleStack } from "react-icons/hi2";
 import { FaUser } from "react-icons/fa";
 import { BsFillPostcardFill } from "react-icons/bs";
 import { FaCirclePlus } from "react-icons/fa6";
+import { BiSolidDashboard } from "react-icons/bi";
+import { FaUsers } from "react-icons/fa";
 const Navbar = () => {
     return (
         <div>
@@ -22,7 +24,7 @@ const Navbar = () => {
                     <div className="flex flex-col flex-1 mt-6">
                         <nav>
                             <NavLink to={'/'} className="flex items-center px-4 py-2 mt-5 text-purple-500 transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 active:bg-gray-100 focus:bg-gray-100 focus:text-gray-700">
-                                <HiRectangleStack className="w-5 h-5" />
+                                <BiSolidDashboard className="w-5 h-5" />
 
                                 <span className="mx-4 font-medium">Dashboard</span>
                             </NavLink>
@@ -44,6 +46,16 @@ const Navbar = () => {
 
                                 <span className="mx-4 font-medium">Create Blog</span>
                             </NavLink>
+                            <NavLink to={'/allBlogs'} className="flex items-center px-4 py-2 mt-5 text-purple-500  transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 active:bg-gray-100 focus:bg-gray-100 focus:text-gray-700">
+                                <HiRectangleStack className="w-5 h-5" />
+
+                                <span className="mx-4 font-medium">All Blogs</span>
+                            </NavLink>
+                            <NavLink to={'/allUsers'} className="flex items-center px-4 py-2 mt-5 text-purple-500  transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 active:bg-gray-100 focus:bg-gray-100 focus:text-gray-700">
+                                <FaUsers className="w-5 h-5" />
+
+                                <span className="mx-4 font-medium">All Users</span>
+                            </NavLink>
 
                         </nav>
                     </div>
@@ -58,7 +70,6 @@ const Navbar = () => {
                         <label htmlFor="my-drawer" className="btn drawer-button border-0 btn-sm bg-black"><MdMenu className="text-2xl text-purple-500" /></label>
                     </div>
                     <div className="drawer-side">
-
                         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-[70%] min-h-full bg-black  text-purple-500 font-medium  border-purple-500 border-2 border-r border-l-0 border-t-0 border-b-0">
                             {/* Sidebar content here */}
@@ -70,10 +81,12 @@ const Navbar = () => {
                                 <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
                                 <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p>
                             </div>
-                            <li><NavLink to={'/'}><HiRectangleStack className="w-5 h-5" />Dashboard</NavLink></li>
+                            <li><NavLink to={'/'}><BiSolidDashboard className="w-5 h-5" />Dashboard</NavLink></li>
                             <li><NavLink to={'/accounts'}><FaUser className="w-5 h-5" />Accounts</NavLink></li>
                             <li><NavLink to={'/myBlogs'}><BsFillPostcardFill className="w-5 h-5" />My blogs</NavLink></li>
                             <li><NavLink to={'/createBlog'}><FaCirclePlus className="w-5 h-5" />Create Blog</NavLink></li>
+                            <li><NavLink to={'/allBlogs'}><HiRectangleStack className="w-5 h-5" />All Blogs</NavLink></li>
+                            <li><NavLink to={'/allUsers'}><FaUsers className="w-5 h-5" />All Users</NavLink></li>
 
                         </ul>
                     </div>
