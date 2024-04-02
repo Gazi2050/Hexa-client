@@ -3,7 +3,7 @@
 
 const Home = () => {
     return (
-        <div>
+        <div className="mt-8">
             <h1>home</h1>
         </div>
     );
