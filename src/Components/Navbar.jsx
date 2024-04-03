@@ -19,7 +19,9 @@ const Navbar = () => {
                         <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="src/assets/profile-user.png" alt="avatar" />
                         {/* <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
                         <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p> */}
-                        <button className="btn btn-outline btn-md md:btn-md mt-5 text-purple-500">LogIn</button>
+                        <Link to={'/logIn'}>
+                            <button className="btn btn-outline btn-md md:btn-md mt-5 text-purple-500">LogIn</button>
+                        </Link>
                     </div>
 
                     <div className="flex flex-col flex-1 mt-2">
@@ -69,7 +71,14 @@ const Navbar = () => {
 
                     <div className="drawer-content">
                         {/* Page content here */}
-                        <label htmlFor="my-drawer" className="btn drawer-button border-0 btn-sm bg-black"><MdMenu className="text-2xl text-purple-500" /></label>
+                        <div className="flex justify-start items-center">
+                            <label htmlFor="my-drawer" className="btn drawer-button border-0 btn-sm bg-black">
+                                <MdMenu className="text-2xl text-purple-500" />
+                            </label>
+                            <div className="ml-20">
+                                <p className="font-semibold text-purple-500 text-4xl">Hexa</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="drawer-side">
@@ -83,7 +92,9 @@ const Navbar = () => {
                                 <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="src/assets/profile-user.png" alt="avatar" />
                                 {/* <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
                         <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p> */}
-                                <button className="btn btn-outline btn-sm mt-5 text-purple-500">LogIn</button>
+                                <Link to={'/logIn'}>
+                                    <button className="btn btn-outline btn-sm mt-5 text-purple-500">LogIn</button>
+                                </Link>
                             </div>
                             <li><NavLink to={'/'}><BiSolidDashboard className="w-5 h-5" />Dashboard</NavLink></li>
                             <li><NavLink to={'/accounts'}><FaUser className="w-5 h-5" />Accounts</NavLink></li>
