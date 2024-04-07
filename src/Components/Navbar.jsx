@@ -13,10 +13,10 @@ const Navbar = () => {
             <div className="hidden md:block lg:block">
                 <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-black border-r border-purple-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                     <Link to={'/'} className="mx-auto">
-                        <img className="w-auto h-12 " src="src/assets/logo.png" alt="logo" />
+                        <img className="w-auto h-12 " src="assets/logo.png" alt="logo" />
                     </Link>
                     <div className="flex flex-col items-center mt-6 -mx-2">
-                        <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="src/assets/profile-user.png" alt="avatar" />
+                        <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="assets/profile-user.png" alt="avatar" />
                         {/* <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
                         <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p> */}
                         <Link to={'/logIn'}>
