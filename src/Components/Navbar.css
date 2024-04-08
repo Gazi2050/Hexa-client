@@ -1,0 +1,7 @@
+/* Navbar.css */
+
+/* Define the scrollbar width and color */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #6b46c1 transparent;
+}

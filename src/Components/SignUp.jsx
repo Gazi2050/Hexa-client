@@ -7,7 +7,9 @@ const SignUp = () => {
             <div className="w-full max-w-sm mx-auto overflow-hidden bg-black rounded-lg shadow-md dark:bg-gray-800">
                 <div className="px-6 py-4">
                     <div className="flex justify-center mx-auto">
-                        <img className="w-auto h-14" src="assets/logo.png" alt="" />
+                        <Link to={'/'}>
+                            <img className="w-auto h-14" src="assets/logo.png" alt="" />
+                        </Link>
                     </div>
 
                     <h3 className="mt-3 text-xl font-medium text-center text-purple-500 dark:text-gray-200">Welcome</h3>
