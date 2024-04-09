@@ -5,6 +5,7 @@ import Root from "../Components/Root";
 import Home from "../Components/Home";
 import LogIn from "../Components/logIn";
 import SignUp from "../Components/SignUp";
+import Accounts from "../Components/Accounts";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/accounts',
-                element: <p>accounts</p>
+                element: <Accounts />
             },
             {
                 path: '/myBlogs',
