@@ -6,6 +6,10 @@ import Home from "../Components/Home";
 import LogIn from "../Components/logIn";
 import SignUp from "../Components/SignUp";
 import Accounts from "../Components/Accounts";
+import MyBlogs from "../Components/MyBlogs";
+import CreateBlog from "../Components/CreateBlog";
+import AllBlogs from "../Components/AllBlogs";
+import AllUsers from "../Components/AllUsers";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -22,19 +26,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myBlogs',
-                element: <p>blogs</p>
+                element: <MyBlogs />
             },
             {
                 path: '/createBlog',
-                element: <p>Create Blog</p>
+                element: <CreateBlog />
             },
             {
                 path: '/allBlogs',
-                element: <p>allBlogs</p>
+                element: <AllBlogs />
             },
             {
                 path: '/allUsers',
-                element: <p>allUsers</p>
+                element: <AllUsers />
             },
         ]
     },

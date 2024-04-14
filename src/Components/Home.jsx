@@ -6,9 +6,9 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>Hexa | Home</title>
+                <title>Hexa | Dashboard</title>
             </Helmet>
-            <h1>home</h1>
+            <h1 className="font-medium text-lg  p-5">Dashboard</h1>
         </div>
     );
 };

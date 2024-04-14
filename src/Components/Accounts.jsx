@@ -11,9 +11,9 @@ const Accounts = () => {
                     <div className="flex justify-center -mt-28 md:justify-center mb-10">
                         <img className="object-cover w-auto h-auto md:w-28 lg:w-32 lg:h-32 border-[3px] border-purple-500 rounded-full dark:border-blue-400 bg-white" alt="Testimonial avatar" src='public/assets/profile-user.png' />
                     </div>
-                    <div className="space-y-5 -ml-10">
-                        <h2 className="m-2 text-base font-semibold md:mt-0"><span className="font-bold">Name :</span> </h2>
-                        <h2 className="m-2 text-base font-semibold md:mt-0"><span className="font-bold">Email :</span> </h2>
+                    <div className="space-y-5 -ml-10 text-lg font-semibold">
+                        <h2 className="m-2  md:mt-0"><span className="font-bold">Name :</span> </h2>
+                        <h2 className="m-2 md:mt-0"><span className="font-bold">Email :</span> </h2>
                     </div>
                 </div>
             </div>
