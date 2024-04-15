@@ -25,11 +25,12 @@ const SignUp = () => {
 
                         <p className="mt-1 text-center text-gray-500 dark:text-gray-400">create account</p>
 
-                        <form>
+                        <form onSubmit={handleSignUp}>
                             <div className="w-full mt-4">
                                 <input
                                     className="block w-full px-4 py-2 mt-2 text-white placeholder-gray-500 bg-slate-900 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-purple-500 dark:focus:border-blue-300 focus:ring-opacity-100 focus:outline-none focus:ring focus:ring-purple-500"
                                     type="text"
+                                    name="name"
                                     placeholder="user name"
                                 />
                             </div>
@@ -37,6 +38,7 @@ const SignUp = () => {
                                 <input
                                     className="block w-full px-4 py-2 mt-2 text-white placeholder-gray-500 bg-slate-900 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-purple-500 dark:focus:border-blue-300 focus:ring-opacity-100 focus:outline-none focus:ring focus:ring-purple-500"
                                     type="email"
+                                    name="email"
                                     placeholder="email address"
                                 />
                             </div>
@@ -45,6 +47,7 @@ const SignUp = () => {
                                 <input
                                     className="block w-full px-4 py-2 mt-2 text-white placeholder-gray-500 bg-slate-900 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-purple-500 dark:focus:border-blue-300 focus:ring-opacity-100 focus:outline-none focus:ring focus:ring-purple-500"
                                     type={showPassword ? 'text' : 'password'}
+                                    name="password"
                                     placeholder="password"
                                 />
                                 <span onClick={() => setShowPassword(!showPassword)} className="text-2xl absolute -mr-[210px] md:-mr-[270px] lg:-mr-[265px] -mb-2 text-purple-500" >{showPassword ? <FaEyeSlash /> : <FaEye />}</span>

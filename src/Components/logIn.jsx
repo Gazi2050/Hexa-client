@@ -1,8 +1,13 @@
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { useState } from 'react';
+
 const logIn = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
     return (
         <div>
             <Helmet>
@@ -34,8 +39,8 @@ const logIn = () => {
                             </div>
 
                             <div className="w-full mt-4 flex justify-center items-center">
-                                <input className="block w-full px-4 py-2 mt-2 text-white placeholder-gray-500 bg-slate-900 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-purple-500 dark:focus:border-blue-300 focus:ring-opacity-100 focus:outline-none focus:ring focus:ring-purple-500" type="password" placeholder="Password" aria-label="Password" />
-                                <FaEye className="text-2xl absolute -mr-[210px] md:-mr-[270px] lg:-mr-[265px] -mb-2 text-purple-500" />
+                                <input className="block w-full px-4 py-2 mt-2 text-white placeholder-gray-500 bg-slate-900 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-purple-500 dark:focus:border-blue-300 focus:ring-opacity-100 focus:outline-none focus:ring focus:ring-purple-500" type={showPassword ? 'text' : 'password'} placeholder="Password" aria-label="Password" />
+                                <span onClick={() => setShowPassword(!showPassword)} className="text-2xl absolute -mr-[210px] md:-mr-[270px] lg:-mr-[265px] -mb-2 text-purple-500" >{showPassword ? <FaEyeSlash /> : <FaEye />}</span>
                             </div>
 
                             <div className="flex items-center justify-between mt-4">

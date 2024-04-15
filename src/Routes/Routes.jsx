@@ -10,11 +10,12 @@ import MyBlogs from "../Components/MyBlogs";
 import CreateBlog from "../Components/CreateBlog";
 import AllBlogs from "../Components/AllBlogs";
 import AllUsers from "../Components/AllUsers";
+import Error from "../Components/Error";
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-        errorElement: <h1 className="text-5xl font-bold">Error</h1>,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
