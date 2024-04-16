@@ -3,7 +3,7 @@ import {
 } from "react-router-dom";
 import Root from "../Components/Root";
 import Home from "../Components/Home";
-import LogIn from "../Components/logIn";
+import LogIn from "../Components/LogIn";
 import SignUp from "../Components/SignUp";
 import Accounts from "../Components/Accounts";
 import MyBlogs from "../Components/MyBlogs";
