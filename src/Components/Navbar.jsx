@@ -1,5 +1,5 @@
 import { MdMenu } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { HiRectangleStack } from "react-icons/hi2";
 import { FaUser } from "react-icons/fa";
 import { BsFillPostcardFill } from "react-icons/bs";
@@ -7,7 +7,26 @@ import { FaCirclePlus } from "react-icons/fa6";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
 import './Navbar.css'
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const handleLogOut = () => {
+        logOut()
+            .then(result => {
+                console.log(result)
+                navigate('/');
+                alert("User LogOut Successfully")
+            })
+            .catch((error) => {
+                const errorCode = error.code
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+
+            });
+    }
 
     return (
         <div className="custom-scrollbar">
@@ -18,12 +37,29 @@ const Navbar = () => {
                         <img className="w-auto h-12 " src="assets/logo.png" alt="logo" />
                     </Link>
                     <div className="flex flex-col items-center mt-6 -mx-2">
-                        <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="assets/profile-user.png" alt="avatar" />
-                        {/* <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
-                        <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p> */}
-                        <Link to={'/logIn'}>
-                            <button className="btn btn-outline btn-md md:btn-md mt-5 text-purple-500">LogIn</button>
-                        </Link>
+                        {user ?
+                            <img className="object-cover w-24 h-24 mx-2 rounded-full bg-purple-500 border-2 border-white" src="assets/profile-user.png" alt="avatar" />
+                            :
+                            <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="assets/profile-user.png" alt="avatar" />
+                        }
+
+                        {user ?
+                            <div className="text-center">
+                                <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">{user.displayName}</h4>
+                                <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">{user.email}</p>
+                            </div>
+                            :
+                            null
+                        }
+                        {user ?
+                            <button onClick={handleLogOut} className="btn btn-outline btn-md md:btn-md mt-4 text-purple-500">
+                                LogOut
+                            </button>
+                            :
+                            <Link to={'/logIn'}>
+                                <button className="btn btn-outline btn-md md:btn-md mt-4 text-purple-500">LogIn</button>
+                            </Link>
+                        }
                     </div>
 
                     <div className="flex flex-col flex-1 mt-2">
@@ -94,9 +130,13 @@ const Navbar = () => {
                                 <img className="object-cover w-24 h-24 mx-2 rounded-full bg-white border-2 border-purple-500" src="assets/profile-user.png" alt="avatar" />
                                 {/* <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">John Doe</h4>
                         <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">john@example.com</p> */}
-                                <Link to={'/logIn'}>
-                                    <button className="btn btn-outline btn-sm mt-5 text-purple-500">LogIn</button>
-                                </Link>
+                                {user ?
+                                    <button onClick={handleLogOut} className="btn btn-outline btn-sm mt-5 text-purple-500">LogOut</button>
+                                    :
+                                    <Link to={'/logIn'}>
+                                        <button className="btn btn-outline btn-sm mt-5 text-purple-500">LogIn</button>
+                                    </Link>
+                                }
                             </div>
                             <li><NavLink to={'/'}><BiSolidDashboard className="w-5 h-5" />Dashboard</NavLink></li>
                             <li><NavLink to={'/accounts'}><FaUser className="w-5 h-5" />Accounts</NavLink></li>
