@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet-async";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { FaUser } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 const AllUsers = () => {
-    const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: users = [], refetch, isError, isLoading } = useQuery({
         queryKey: ['allUsers'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/allUsers');
+            const res = await axiosSecure.get('/allUsers');
             return res.data;
         }
     })
@@ -38,9 +38,9 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <div className="flex justify-between items-center text-2xl">
-                                        <div className="btn btn-sm btn-outline text-purple-500"><FaUser /></div>
-                                        <div className="btn btn-sm btn-outline text-red-600"><MdDelete /></div>
+                                    <div className="flex justify-between items-center">
+                                        <div className="btn btn-sm btn-outline text-purple-500 text-xl"><FaUser /></div>
+                                        <div className="btn btn-sm btn-outline text-red-600 text-xl"><MdDelete /></div>
                                     </div>
                                 </td>
                             </tr>)
