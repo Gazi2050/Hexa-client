@@ -29,10 +29,10 @@ const Navbar = () => {
     }
 
     return (
-        <div className="custom-scrollbar">
+        <div className="custom-scrollbar ">
             {/* for tab and laptop */}
-            <div className="hidden md:block lg:block">
-                <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-black border-r border-purple-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
+            <div className="hidden md:block lg:block ">
+                <aside className="flex flex-col w-64 h-full px-4 py-8 overflow-y-auto bg-black border-r border-purple-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                     <Link to={'/'} className="mx-auto">
                         <img className="w-auto h-12 " src="assets/logo.png" alt="logo" />
                     </Link>
