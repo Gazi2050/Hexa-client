@@ -5,10 +5,10 @@ const Root = () => {
     return (
         <div className="bg-zinc-800  text-white ">
             <div className="flex justify-center  ">
-                <div className="sticky  w-1/4 left-0 bottom-0">
+                <div className="sticky w-1/4 h-screen ">
                     <Navbar />
                 </div>
-                <div className="w-3/4 mx-auto  bottom-0">
+                <div className="w-3/4">
                     <Outlet />
                 </div>
             </div>

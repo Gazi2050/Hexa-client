@@ -6,7 +6,6 @@ import { BsFillPostcardFill } from "react-icons/bs";
 import { FaCirclePlus } from "react-icons/fa6";
 import { BiSolidDashboard } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
-import './Navbar.css'
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 const Navbar = () => {
@@ -29,7 +28,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="custom-scrollbar ">
+        <div className="fixed">
             {/* for tab and laptop */}
             <div className="hidden md:block lg:block ">
                 <aside className="flex flex-col w-64 h-full px-4 py-8 overflow-y-auto bg-black border-r border-purple-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">

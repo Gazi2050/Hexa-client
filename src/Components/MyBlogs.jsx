@@ -18,7 +18,7 @@ const MyBlogs = () => {
                 <title>Hexa | My Blogs</title>
             </Helmet>
             {blogs.map(blog => <div key={blog._id} className="mx-5 mb-5 bg-black rounded-2xl shadow-sm  shadow-purple-500">
-                <div className="card card-side bg-zinc-800 pr-60">
+                <div className="card card-side bg-zinc-900 pr-60 rounded-b-none">
                     <figure className="w-[50%]"><img className="w-full h-72" src={blog.img} alt="Movie" /></figure>
                     <div className="card-body w-[50%]">
                         <h2 className="card-title text-2xl">{blog.title}</h2>
