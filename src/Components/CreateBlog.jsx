@@ -16,37 +16,6 @@ const CreateBlog = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-    // const onSubmit = async (data) => {
-    //     moment().format('MMMM Do YYYY, h:mm:ss a');
-    //     console.log(data);
-    //     const imageFile = { image: data.img[0] }
-    //     const res = await axiosPublic.post(image_hosting_api, imageFile, {
-    //         headers: {
-    //             'content-type': 'multipart/form-data'
-    //         }
-    //     });
-    //     if (res.data.success) {
-    //         // now send the menu item data to the server with the image url
-    //         const blog = {
-    //             title: data.title,
-    //             description: data.description,
-    //             eventFee: parseInt(data.eventFee),
-    //             dateTime: dateTime,
-    //             img: res.data.data.display_url
-    //         }
-    //         const eventRes = await axiosSecure.post('/events', eventItem);
-    //         //console.log(eventRes.data)
-    //         if (eventRes.data.insertedId) {
-    //             reset();
-    //             alert('Event added successfully');
-    //             navigate('/events');
-    //         } else {
-    //             alert('Failed to add event. Please try again.');
-    //         }
-    //     }
-    //     console.log(res.data);
-    // }
-
     const onSubmit = async (data) => {
         // Get the current date and time
         const dateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -64,7 +33,8 @@ const CreateBlog = () => {
                 title: data.title,
                 description: data.description,
                 img: res.data.data.display_url,
-                dateTime: dateTime // Include the dateTime in the blog data
+                dateTime: dateTime,
+                email: user.email
             }
 
             const blogRes = await axiosSecure.post('/blogs', blog); // Assuming '/blogs' is the endpoint for creating blog posts
