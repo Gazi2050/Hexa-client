@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { BiUpvote, BiDownvote, BiSolidCommentDetail } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -33,7 +34,10 @@ const Home = () => {
                     <figure className="w-[50%]"><img className="w-full h-72" src={blog.img} alt="Movie" /></figure>
                     <div className="card-body w-[50%]">
                         <h2 className="card-title text-2xl">{blog.title}</h2>
-                        <p>Click the button to watch on Jetflix app.</p>
+                        <div className="mt-5">
+                            <p className="truncate font-bold">{blog.description}</p>
+                            <Link className="text-blue-500 hover:underline">See more</Link>
+                        </div>
                     </div>
                 </div>
                 <div className="flex justify-evenly py-2 text-2xl">
