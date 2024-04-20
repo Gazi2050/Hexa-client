@@ -35,6 +35,7 @@ const Home = () => {
                     <figure className="w-[50%]"><img className="w-full h-72" src={blog.img} alt="Movie" /></figure>
                     <div className="card-body w-[50%]">
                         <h2 className="card-title text-2xl">{blog.title}</h2>
+                        <p className="text-sm text-slate-600">{blog.dateTime}</p>
                         <div className="mt-5">
                             <p className="truncate font-bold">{blog.description}</p>
                             <Link className="text-purple-500 hover:underline font-semibold">See more</Link>

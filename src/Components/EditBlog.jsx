@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 
 const EditBlog = () => {
-    const event = useLoaderData();
-    const [inputValue, setInputValue] = useState();
+    const blog = useLoaderData();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const { data: blogs = [] } = useQuery({
@@ -15,23 +15,22 @@ const EditBlog = () => {
             return res.data;
         }
     });
+    console.log(blogs);
+    const { _id, title, description } = blog;
 
-
-    const blogToEdit = blogs[0] || {};
-    const { _id, title, description } = blogToEdit;
-
-    const handleUpdateBlog = async (e) => {
+    const handleUpdateBlog = async (event) => {
         event.preventDefault();
 
-        const form = e.target;
+        const form = event.target;
         const title = form.title.value;
         const description = form.description.value;
 
-
         try {
+            const updateTime = moment().format('MMMM Do YYYY, h:mm:ss a');
             const UpdateBlog = {
                 title,
-                description
+                description,
+                updateTime
             };
 
             const response = await axiosSecure.put(`/blogs/${_id}`, UpdateBlog);
@@ -45,23 +44,27 @@ const EditBlog = () => {
                 alert('Failed to update blog');
             }
         } catch (error) {
-            const errorCode = error.code;
-            console.error('Error updating blog:', errorCode);
+            console.error('Error updating blog:', error);
+            alert('Error updating blog');
         }
     };
 
     return (
         <div>
             <div className="mt-11 ">
-                <form onSubmit={''}
+                <form onSubmit={handleUpdateBlog}
                     className="bg-zinc-800 shadow-md shadow-purple-500 px-9 py-1 -mt-5 lg:px-20 lg:py-2  rounded-md space-y-5 lg:-mt-10 " >
                     <div className="space-y-5">
                         <p className="text-center font-semibold text-xl lg:text-4xl mt-2">Create Blog</p>
                         <input
+                            defaultValue={title}
+                            name="title"
                             type="text"
                             placeholder="Title"
                             className="input input-md border-2 focus:border-purple-500 w-full  bg-black " />
                         <textarea
+                            defaultValue={description}
+                            name="description"
                             type="text"
                             placeholder="Description"
                             className="input input-md border-2 focus:border-purple-500 w-full  bg-black pb-40 pt-3" />
