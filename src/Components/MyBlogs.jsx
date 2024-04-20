@@ -75,8 +75,8 @@ const MyBlogs = () => {
                                         <p className="truncate font-semibold">{blog.description}</p>
                                         <Link className="text-purple-500 hover:underline font-semibold">See more</Link>
                                     </div>
-                                    <div className="flex justify-start space-x-3 mt-5">
-                                        <Link to={''} className="btn btn-sm btn-outline text-purple-500 text-xl"><MdEdit /></Link>
+                                    <div className="flex justify-start space-x-3 mt-3">
+                                        <Link to={`/editBlog/${blog._id}`} className="btn btn-sm btn-outline text-purple-500 text-xl"><MdEdit /></Link>
                                         <div onClick={() => handleDelete(blog._id)} className="btn btn-sm btn-outline text-red-600 text-xl"><MdDelete /></div>
                                     </div>
                                 </div>

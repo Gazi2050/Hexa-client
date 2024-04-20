@@ -8,7 +8,6 @@ import SignUp from "../Components/SignUp";
 import Accounts from "../Components/Accounts";
 import MyBlogs from "../Components/MyBlogs";
 import CreateBlog from "../Components/CreateBlog";
-import AllBlogs from "../Components/AllBlogs";
 import AllUsers from "../Components/AllUsers";
 import Error from "../Components/Error";
 import EditBlog from "../Components/EditBlog";
@@ -35,12 +34,13 @@ export const router = createBrowserRouter([
                 element: <CreateBlog />
             },
             {
-                path: '/editBlog',
-                element: <EditBlog />
-            },
-            {
-                path: '/allBlogs',
-                element: <AllBlogs />
+                path: '/editBlog/:id',
+                element: <EditBlog />,
+                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('access-token')}`
+                    }
+                })
             },
             {
                 path: '/allUsers',

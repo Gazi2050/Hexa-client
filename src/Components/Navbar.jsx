@@ -87,11 +87,6 @@ const Navbar = () => {
 
                                     <span className="mx-4 font-medium">Create Blog</span>
                                 </NavLink>
-                                <NavLink to={'/allBlogs'} className="flex items-center px-4 py-2 mt-5 text-purple-500  transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 active:bg-gray-100 focus:bg-gray-100 focus:text-gray-700">
-                                    <HiRectangleStack className="w-5 h-5" />
-
-                                    <span className="mx-4 font-medium">All Blogs</span>
-                                </NavLink>
                                 <NavLink to={'/allUsers'} className="flex items-center px-4 py-2 mt-5 text-purple-500  transition-colors duration-300 transform rounded-lg dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700 active:bg-gray-100 focus:bg-gray-100 focus:text-gray-700">
                                     <FaUsers className="w-5 h-5" />
 
@@ -144,7 +139,6 @@ const Navbar = () => {
                             <li><NavLink to={'/accounts'}><FaUser className="w-5 h-5" />Accounts</NavLink></li>
                             <li><NavLink to={'/myBlogs'}><BsFillPostcardFill className="w-5 h-5" />My blogs</NavLink></li>
                             <li><NavLink to={'/createBlog'}><FaCirclePlus className="w-5 h-5" />Create Blog</NavLink></li>
-                            <li><NavLink to={'/allBlogs'}><HiRectangleStack className="w-5 h-5" />All Blogs</NavLink></li>
                             <li><NavLink to={'/allUsers'}><FaUsers className="w-5 h-5" />All Users</NavLink></li>
 
                         </ul>

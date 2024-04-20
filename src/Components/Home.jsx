@@ -3,6 +3,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { BiUpvote, BiDownvote, BiSolidCommentDetail } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
 
 
 const Home = () => {
@@ -36,7 +37,10 @@ const Home = () => {
                         <h2 className="card-title text-2xl">{blog.title}</h2>
                         <div className="mt-5">
                             <p className="truncate font-bold">{blog.description}</p>
-                            <Link className="text-blue-500 hover:underline">See more</Link>
+                            <Link className="text-purple-500 hover:underline font-semibold">See more</Link>
+                        </div>
+                        <div className="flex justify-start mt-3">
+                            <div className="btn btn-sm btn-outline text-red-600 text-xl"><MdDelete /></div>
                         </div>
                     </div>
                 </div>
