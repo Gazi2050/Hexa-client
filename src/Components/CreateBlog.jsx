@@ -34,7 +34,8 @@ const CreateBlog = () => {
                 description: data.description,
                 img: res.data.data.display_url,
                 dateTime: dateTime,
-                email: user.email
+                email: user.email,
+                name: user.displayName,
             }
 
             const blogRes = await axiosSecure.post('/blogs', blog); // Assuming '/blogs' is the endpoint for creating blog posts

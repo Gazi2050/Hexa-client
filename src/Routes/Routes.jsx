@@ -11,6 +11,7 @@ import CreateBlog from "../Components/CreateBlog";
 import AllUsers from "../Components/AllUsers";
 import Error from "../Components/Error";
 import EditBlog from "../Components/EditBlog";
+import BlogDetails from "../Components/BlogDetails";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -28,6 +29,11 @@ export const router = createBrowserRouter([
             {
                 path: '/myBlogs',
                 element: <MyBlogs />
+            },
+            {
+                path: '/blogDetails/:id',
+                element: <BlogDetails />,
+                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path: '/createBlog',

@@ -71,10 +71,14 @@ const MyBlogs = () => {
                                 <figure className="w-[50%]"><img className="w-full h-72" src={blog.img} alt="Movie" /></figure>
                                 <div className="card-body w-[50%]">
                                     <h2 className="card-title text-2xl">{blog.title}</h2>
-                                    <p className="text-sm text-slate-600">{blog.dateTime}</p>
+                                    {blog.dateTime ? (
+                                        <p className="text-sm text-slate-600">{blog.dateTime}</p>
+                                    ) : (
+                                        <p className="text-sm text-slate-600">Updated on {blog.updateTime}</p>
+                                    )}
                                     <div className="mt-5">
                                         <p className="truncate font-semibold">{blog.description}</p>
-                                        <Link className="text-purple-500 hover:underline font-semibold">See more</Link>
+                                        <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
                                     </div>
                                     <div className="flex justify-start space-x-3 mt-3">
                                         <Link to={`/editBlog/${blog._id}`} className="btn btn-sm btn-outline text-purple-500 text-xl"><MdEdit /></Link>
