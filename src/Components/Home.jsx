@@ -1,13 +1,16 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { BiUpvote, BiDownvote, BiSolidCommentDetail } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 
 const Home = () => {
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: blogs = [], refetch, isError, isLoading } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
@@ -15,6 +18,37 @@ const Home = () => {
             return res.data;
         }
     })
+
+    const handleDeleteEvent = async (event) => {
+        try {
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            });
+
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/allBlogs/${event}`);
+                if (res.data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Blog has been deleted.",
+                        icon: "success",
+                    });
+                }
+            }
+        } catch (error) {
+            console.error("Error deleting blog", error);
+            alert("Error deleting blog")
+        }
+    };
+
+
     return (
         <div>
             <Helmet>
@@ -30,9 +64,9 @@ const Home = () => {
                     <p className="text-2xl font-bold text-red-600 text-center">Error fetching blogs</p>
                 </div>
             )}
-            {blogs.map(blog => <div key={blog._id} className="mx-5 my-5 bg-black rounded-2xl shadow-sm  shadow-purple-500">
+            {blogs.map(blog => <div key={blog._id} className="m-5 bg-black rounded-2xl shadow-sm  shadow-purple-500">
                 <div className="card card-side bg-zinc-900 pr-60 rounded-b-none">
-                    <figure className="w-[50%]"><img className="w-full h-72" src={blog.img} alt="Movie" /></figure>
+                    <figure className="w-[50%]"><img className="w-full h-[340px]" src={blog.img} alt="Movie" /></figure>
                     <div className="card-body w-[50%]">
                         <h2 className="card-title text-2xl">{blog.title}</h2>
                         {blog.dateTime ? (
@@ -40,12 +74,12 @@ const Home = () => {
                         ) : (
                             <p className="text-sm text-slate-600">Updated on {blog.updateTime}</p>
                         )}
-                        <div className="mt-5">
-                            <p className="truncate font-bold">{blog.description}</p>
-                            <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
+                        <div className="mb-10 ">
+                            <p className="truncate font-bold ">{blog.description}</p>
+                            <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold ">See more</Link>
                         </div>
-                        <div className="flex justify-start mt-3">
-                            <div className="btn btn-sm btn-outline text-red-600 text-xl"><MdDelete /></div>
+                        <div className="flex justify-start mt-12">
+                            <div onClick={() => handleDeleteEvent(blog._id)} className="btn btn-sm btn-outline text-red-600 text-xl -my-14"><MdDelete /></div>
                         </div>
                     </div>
                 </div>
