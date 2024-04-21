@@ -6,9 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
+import useAdmin from "../Hooks/useAdmin";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 const Home = () => {
+    const [isAdmin] = useAdmin();
+    const { user } = useContext(AuthContext);
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { data: blogs = [], refetch, isError, isLoading } = useQuery({
@@ -55,12 +60,12 @@ const Home = () => {
                 <title>Hexa | Dashboard</title>
             </Helmet>
             {isLoading && (
-                <div className="flex justify-center items-center mt-44">
-                    <p className="text-2xl font-bold text-purple-500 text-center">Loading...</p>
+                <div className="flex justify-center items-center p-60">
+                    <span className="loading loading-spinner loading-lg bg-purple-500"></span>
                 </div>
             )}
             {isError && (
-                <div className="flex justify-center items-center mt-44">
+                <div className="flex justify-center items-center p-60">
                     <p className="text-2xl font-bold text-red-600 text-center">Error fetching blogs</p>
                 </div>
             )}
@@ -74,13 +79,30 @@ const Home = () => {
                         ) : (
                             <p className="text-sm text-slate-600">Updated on {blog.updateTime}</p>
                         )}
-                        <div className="mb-10 ">
+                        {/* <div className="mb-20 ">
                             <p className="truncate font-bold ">{blog.description}</p>
                             <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold ">See more</Link>
-                        </div>
-                        <div className="flex justify-start mt-12">
-                            <div onClick={() => handleDeleteEvent(blog._id)} className="btn btn-sm btn-outline text-red-600 text-xl -my-14"><MdDelete /></div>
-                        </div>
+                        </div> */}
+                        {user ? (
+                            isAdmin ? (
+                                <div>
+                                    <div className="mb-24">
+                                        <p className="truncate font-bold">{blog.description}</p>
+                                        <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
+                                    </div>
+                                    <div className="flex justify-start mt-12">
+                                        <div onClick={() => handleDeleteEvent(blog._id)} className="btn btn-sm btn-outline text-red-600 text-xl -my-14"><MdDelete /></div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="mb-20">
+                                    <p className="truncate font-bold">{blog.description}</p>
+                                    <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
+                                </div>
+                            )
+                        ) : (null)}
+
+
                     </div>
                 </div>
                 <div className="flex justify-evenly py-2 text-2xl">
@@ -91,7 +113,7 @@ const Home = () => {
             </div>)
 
             }
-        </div>
+        </div >
     );
 };
 

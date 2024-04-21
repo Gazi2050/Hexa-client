@@ -12,6 +12,7 @@ import AllUsers from "../Components/AllUsers";
 import Error from "../Components/Error";
 import EditBlog from "../Components/EditBlog";
 import BlogDetails from "../Components/BlogDetails";
+import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -24,24 +25,24 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/accounts',
-                element: <Accounts />
+                element: <PrivateRoute><Accounts /></PrivateRoute>
             },
             {
                 path: '/myBlogs',
-                element: <MyBlogs />
+                element: <PrivateRoute><MyBlogs /></PrivateRoute>
             },
             {
                 path: '/blogDetails/:id',
-                element: <BlogDetails />,
+                element: <PrivateRoute><BlogDetails /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
             },
             {
                 path: '/createBlog',
-                element: <CreateBlog />
+                element: <PrivateRoute><CreateBlog /></PrivateRoute>
             },
             {
                 path: '/editBlog/:id',
-                element: <EditBlog />,
+                element: <PrivateRoute><EditBlog /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('access-token')}`
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allUsers',
-                element: <AllUsers />
+                element: <PrivateRoute><AllUsers /></PrivateRoute>
             },
         ]
     },

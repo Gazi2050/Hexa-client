@@ -64,7 +64,7 @@ const MyBlogs = () => {
                 <p className="text-lg font-bold text-center">Blogs : {blogs.length}</p>
             </div>
             <div>
-                {user ? (
+                {(
                     blogs.map(blog => (
                         <div key={blog._id} className="mx-5 my-5 bg-black rounded-2xl shadow-sm shadow-purple-500">
                             <div className="card card-side bg-zinc-900 pr-60 rounded-b-none">
@@ -93,16 +93,6 @@ const MyBlogs = () => {
                             </div>
                         </div>
                     ))
-                ) : (
-                    <div className="flex justify-center items-center pt-24">
-                        <div className="w-full px-20 py-14 lg:px-28 lg:py-16 lg:mt-5 mb-5 bg-zinc-800 rounded-lg shadow-lg dark:bg-gray-800 shadow-purple-500 text-white">
-                            <h1>Please LogIn or SignUp</h1>
-                            <div className="flex justify-center items-center space-x-3 mt-5">
-                                <Link to={'/logIn'} className="btn btn-outline text-purple-500 btn-md md:btn-md lg:btn-md hover:bg-black">LogIn</Link>
-                                <Link to={'/signUp'} className="btn btn-outline text-purple-500 btn-md md:btn-md lg:btn-md hover:bg-black">SignUp</Link>
-                            </div>
-                        </div>
-                    </div>
                 )}
             </div>
         </div>
