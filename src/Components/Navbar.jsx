@@ -47,7 +47,12 @@ const Navbar = () => {
 
                             {user ?
                                 <div className="text-center">
-                                    <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">{user.displayName}</h4>
+                                    <h4 className="mx-2 mt-2 font-medium text-white dark:text-gray-200">{user.displayName
+                                    }{isAdmin ?
+                                        (<span className="text-purple-500 font-bold m-1 text-sm">( Admin )</span>)
+                                        :
+                                        (null)
+                                        }</h4>
                                     <p className="mx-2 mt-1 text-sm font-medium text-gray-500 dark:text-gray-400">{user.email}</p>
                                 </div>
                                 :
