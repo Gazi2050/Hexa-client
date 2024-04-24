@@ -30,7 +30,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className=" ">
+        <div className="">
             {/* for tab and laptop */}
             <div className="fixed hidden md:flex lg:flex flex-col w-auto h-full px-4 py-8 overflow-y-auto bg-black border-r border-purple-500 rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700">
                 <div className="hidden md:block lg:block ">
@@ -114,7 +114,7 @@ const Navbar = () => {
             </div >
 
             {/* for mobile */}
-            < div className="block md:hidden lg:hidden " >
+            < div className="block md:hidden lg:hidden bg-zinc-800 w-screen z-20 fixed" >
                 <div className="drawer ">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
 
