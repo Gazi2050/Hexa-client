@@ -87,9 +87,9 @@ const MyBlogs = () => {
                                 </div>
                             </div>
                             <div className="flex justify-evenly py-2 text-2xl">
-                                <div className="flex justify-center space-x-2"><p className="hover:text-green-600"><BiUpvote /></p><span>5</span></div>
-                                <div className="flex justify-center space-x-2"><p className="hover:text-red-600"><BiDownvote /></p><span>5</span></div>
-                                <div className="flex justify-center space-x-2"><p className="hover:text-purple-600"><BiSolidCommentDetail /></p><span>5</span></div>
+                                <div className="flex justify-center space-x-2"><p className="text-green-600"><BiUpvote /></p><span>0</span></div>
+                                <div className="flex justify-center space-x-2"><p className="text-red-600"><BiDownvote /></p><span>5</span></div>
+                                <div className="flex justify-center space-x-2"><p className="text-purple-600"><BiSolidCommentDetail /></p><span>5</span></div>
                             </div>
                         </div>
                     ))

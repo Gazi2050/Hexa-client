@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import { BiUpvote, BiDownvote, BiSolidCommentDetail } from "react-icons/bi";
+import { BiUpvote, BiDownvote, BiSolidUpvote, BiSolidDownvote, BiSolidCommentDetail } from "react-icons/bi";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
@@ -54,6 +54,56 @@ const Home = () => {
     };
 
 
+    // Update handleVote function to handle both upvote and downvote
+    const handleUpVote = async (blogId) => {
+        try {
+            const email = user.email;
+            const UpdateBlog = {
+                email
+            };
+            const response = await axiosSecure.put(`/upVote/${blogId}`, UpdateBlog);
+            const data = await response.data;
+
+            console.log(data);
+            if (data.modifiedCount) {
+                refetch()
+            } else {
+                alert('Failed to upVote');
+            }
+        } catch (error) {
+            console.error('Error updating blog:', error);
+            alert('Error updating blog');
+        }
+    };
+    const handleDownVote = async (blogId) => {
+        try {
+            const email = user.email;
+            const UpdateBlog = {
+                email
+            };
+            const response = await axiosSecure.put(`/downVote/${blogId}`, UpdateBlog);
+            const data = await response.data;
+
+            console.log(data);
+            if (data.modifiedCount) {
+                refetch()
+            } else {
+                alert('Failed to upVote');
+            }
+        } catch (error) {
+            console.error('Error updating blog:', error);
+            alert('Error updating blog');
+        }
+    };
+
+
+
+
+    const handleComment = async (blogId) => {
+        // Implement logic to handle commenting
+    };
+
+
     return (
         <div>
             <Helmet>
@@ -79,10 +129,6 @@ const Home = () => {
                         ) : (
                             <p className="text-sm text-slate-600">Updated on {blog.updateTime}</p>
                         )}
-                        {/* <div className="mb-20 ">
-                            <p className="truncate font-bold ">{blog.description}</p>
-                            <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold ">See more</Link>
-                        </div> */}
                         {user ? (
                             isAdmin ? (
                                 <div>
@@ -106,8 +152,17 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="flex justify-evenly py-2 text-2xl">
-                    <div className="flex justify-center space-x-2"><p className="hover:text-green-600"><BiUpvote /></p><span>5</span></div>
-                    <div className="flex justify-center space-x-2"><p className="hover:text-red-600"><BiDownvote /></p><span>5</span></div>
+
+                    {blog.upVote?.some(vote => vote?.email === user?.email) ?
+                        (<div className="flex justify-center space-x-2"><p className="text-green-600"><BiSolidUpvote /></p><span>{blog.upVote?.length > 0 ? blog.upVote.length : '0'}</span></div>)
+                        :
+                        (<div className="flex justify-center space-x-2" onClick={() => handleUpVote(blog._id)}><p className="hover:text-green-600"><BiUpvote /></p><span>{blog.upVote?.length > 0 ? blog.upVote.length : '0'}</span></div>)}
+
+                    {blog.downVote?.some(vote => vote?.email === user?.email) ?
+                        (<div className="flex justify-center space-x-2"><p className="text-red-600"><BiSolidDownvote /></p><span>{blog.downVote && blog.downVote.length > 0 ? blog.downVote.length : '0'}</span></div>)
+                        :
+                        (<div className="flex justify-center space-x-2" onClick={() => handleDownVote(blog._id)}><p className="hover:text-red-600"><BiDownvote /></p><span>{blog.downVote && blog.downVote.length > 0 ? blog.downVote.length : '0'}</span></div>)}
+
                     <div className="flex justify-center space-x-2"><p className="hover:text-purple-600"><BiSolidCommentDetail /></p><span>5</span></div>
                 </div>
             </div>)
