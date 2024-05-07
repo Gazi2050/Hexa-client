@@ -9,7 +9,7 @@ const Accounts = () => {
             <Helmet>
                 <title>Hexa | Accounts</title>
             </Helmet>
-            <div className="-ml-16 mr-5 md:ml-24 lg:ml-0">
+            <div className="-ml-16 mr-5 md:ml-28 lg:ml-0">
                 <div className="w-full max-w-md px-8 py-4  my-40 bg-zinc-800 rounded-lg shadow-lg shadow-purple-500">
                     <div className="flex justify-center -mt-16 md:justify-center">
                         <img className="object-cover w-28 h-28 border-2 border-purple-500 rounded-full bg-white" alt="Testimonial avatar" src="public/assets/profile-user.png" />
