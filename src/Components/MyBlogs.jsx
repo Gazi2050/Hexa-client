@@ -22,7 +22,7 @@ const MyBlogs = () => {
         }
     })
 
-    const url = `http://localhost:5000/blogs?email=${user?.email}`;
+    const url = `https://hexa-server.vercel.app/blogs?email=${user?.email}`;
 
     useEffect(() => {
         fetch(url, {
@@ -46,7 +46,7 @@ const MyBlogs = () => {
             confirmButtonText: 'Delete Blog!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/blogs/${id}`, {
+                fetch(`https://hexa-server.vercel.app/blogs/${id}`, {
                     method: 'DELETE'
                 })
                     .then((res) => res.json())

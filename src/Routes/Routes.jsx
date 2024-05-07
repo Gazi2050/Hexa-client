@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
             {
                 path: '/blogDetails/:id',
                 element: <PrivateRoute><BlogDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://hexa-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '/createBlog',
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
             {
                 path: '/editBlog/:id',
                 element: <PrivateRoute><EditBlog /></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`, {
+                loader: ({ params }) => fetch(`https://hexa-server.vercel.app/blogs/${params.id}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('access-token')}`
                     }
