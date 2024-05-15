@@ -175,8 +175,8 @@ const Home = () => {
                         </div>
                     </div>
                     {/* for tab */}
-                    <div className="hidden lg:hidden md:block ml-28 my-5">
-                        <div className="flex max-w-md overflow-hidden bg-zinc-900 rounded-t-lg shadow-lg dark:bg-gray-800">
+                    <div className="hidden lg:hidden md:block ml-28 my-5 ">
+                        <div className="flex max-w-md overflow-hidden bg-zinc-900 rounded-t-lg  dark:bg-gray-800">
                             <div className="w-1/3 bg-cover" ><img className="w-full h-full" src={blog.img} alt="" /></div>
                             <div className="w-2/3 p-4 md:p-4">
                                 <h1 className="text-xl font-bold">{blog.title}</h1>

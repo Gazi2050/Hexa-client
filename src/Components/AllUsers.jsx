@@ -76,7 +76,10 @@ const AllUsers = () => {
             <Helmet>
                 <title>Hexa | All Users</title>
             </Helmet>
-            <div className="ml-40 w-full -mt-5">
+            <div className="block md:block lg:hidden">
+                <h1 className="text-center font-bold text-xl mt-40 -ml-16">Please view on larger devices</h1>
+            </div>
+            <div className="hidden md:hidden lg:block">
                 <p className="text-center text-4xl font-semibold mb-2">All Users</p>
                 <p className="text-xl font-bold my-1">Total Users: <span>{users.length}</span></p>
                 <div className="overflow-x-auto ">

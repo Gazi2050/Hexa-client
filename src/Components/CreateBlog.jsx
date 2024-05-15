@@ -51,11 +51,12 @@ const CreateBlog = () => {
     }
 
     return (
-        <div className="mt-10 lg:pt-5 mr-10 md:ml-36  lg:ml-36">
+        <div className="mt-10 lg:pt-5 ">
             <Helmet>
                 <title>Hexa | Create Blog</title>
             </Helmet>
-            <div>
+            {/* laptop and tab */}
+            <div className="hidden md:block lg:block md:ml-20 lg:ml-0">
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="bg-zinc-800 shadow-md shadow-purple-500 px-9 py-1 -mt-5 lg:px-20 lg:py-2  rounded-md space-y-5 lg:-mt-10 " >
                     <div className="space-y-5">
@@ -87,8 +88,40 @@ const CreateBlog = () => {
                     {errors.description?.type === 'required' && <p className="text-red-600 font-medium">Description is required</p>}
                 </form>
 
+            </div >
+            {/* mobile */}
+            <div className="block md:hidden lg:hidden -ml-20 px-5">
+                <section className="space-y-1 w-full ">
+                    <h1 className="text-center font-medium pt-5 text-xl">Create Blog</h1>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="space-y-1">
+                            <label className="text-white">Title</label>
+                            <input
+                                {...register('title', { required: true })}
+                                placeholder="title..." type="text" className="input input-md border-2 focus:border-purple-500 w-full  bg-black " />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-white">Description</label>
+                            <textarea
+                                {...register('description', { required: true })}
+                                placeholder="description..." type="text" className="input input-md border-2 focus:border-purple-500 w-full pb-36 bg-black " />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-white">Image</label>
+                            <input
+                                {...register('img')}
+                                type="file"
+                                className="file-input-sm lg:file-input-md file-input file-input-bordered  max-w-xs bg-black w-full" />
+                        </div>
+                        <div className="flex justify-end items-center pt-5 ">
+                            <button type="submit" className="btn btn-sm btn-outline text-purple-600">Post</button>
+                        </div>
+                        {errors.title?.type === 'required' && <p className="text-red-600 font-medium">Title is required</p>}
+                        {errors.description?.type === 'required' && <p className="text-red-600 font-medium">Description is required</p>}
+                    </form>
+                </section>
             </div>
-        </div>
+        </div >
     );
 };
 
