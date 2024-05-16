@@ -152,7 +152,10 @@ const Home = () => {
                                             <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
                                         </div>
                                     )
-                                ) : (null)}
+                                ) : (<div className="mb-20">
+                                    <p className="mt-2 text-md line-clamp-2 font-semibold">{blog.description}</p>
+                                    <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
+                                </div>)}
 
 
                             </div>

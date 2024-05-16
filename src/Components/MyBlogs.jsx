@@ -143,7 +143,7 @@ const MyBlogs = () => {
                                             <p className="text-sm text-slate-600">Updated on {blog.updateTime}</p>
                                         )}
                                         <div className="mt-5">
-                                            <p className="truncate font-semibold">{blog.description}</p>
+                                            <p className="mt-2 text-md line-clamp-2 font-semibold">{blog.description}</p>
                                             <Link to={`/blogDetails/${blog._id}`} className="text-purple-500 hover:underline font-semibold">See more</Link>
                                         </div>
                                         <div className="flex justify-start space-x-3 mt-3">
