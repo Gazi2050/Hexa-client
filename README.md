@@ -21,3 +21,5 @@ Welcome to Hexa, your ultimate destination for creating, sharing, and engaging w
 6. **Administer the Platform:** Admins can access the admin panel to manage users, posts, and site settings efficiently.
 
 Thank you for choosing Hexa for your blogging journey. Let your creativity flow and inspire others with your unique voice!
+
+### [Backend-Repo](https://github.com/Gazi2050/Hexa-server)
